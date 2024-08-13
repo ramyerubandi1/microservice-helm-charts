@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: yerubandiram/cal
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: calculator-app
+  type: LoadBalancer
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
