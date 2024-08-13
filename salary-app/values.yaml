@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: yerubandiram/salary
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  name: salary-app
+  type: LoadBalancer
+  port: 80
+  targetPort: 4000
+
+ingress:
+  enabled: false
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

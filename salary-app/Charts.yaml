@@ -1,0 +1,4 @@
+apiVersion: v2
+name: salary-app
+description: A Helm chart for Salary Flask app
+version: 0.1.0
