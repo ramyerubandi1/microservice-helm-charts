@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: yerubandiram/cal
+  repository: yerubandiram/micorservicea
   tag: latest
   pullPolicy: IfNotPresent
 
