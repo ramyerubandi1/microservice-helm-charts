@@ -1,5 +1,5 @@
 # templates/hpa.yaml
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Release.Name }}-hpa
