@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: yerubandiram/cal
+  repository: microserviceb/microserviceb
   tag: latest
   pullPolicy: IfNotPresent
 
