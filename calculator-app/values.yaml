@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: microserviceb/microserviceb
+  repository: 024848485298.dkr.ecr.us-west-2.amazonaws.com/microserviceb
   tag: latest
   pullPolicy: IfNotPresent
 
