@@ -31,7 +31,7 @@ pipeline {
                     // Ensure variable substitution is done correctly
                     sh """
                     #!/bin/bash
-                    helm upgrade --install my-release ./salary-app --namespace default 
+                    helm upgrade --install my-release2 ./salary-app --namespace default 
                     """
                 }
             }
