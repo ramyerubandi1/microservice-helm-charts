@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'us-west-2'
-        CLUSTER_NAME = 'my-cluster'
+        CLUSTER_NAME = 'newcluster'
         BRANCH_NAME = 'main'
     }
 
