@@ -1,6 +1,5 @@
 pipeline {
-    agent any { // Specify the correct node label
-
+    agent any 
     
     stages {
         stage('Checkout') {
@@ -32,5 +31,4 @@ pipeline {
             cleanWs()
         }
     }
-}
 }
