@@ -1,26 +1,18 @@
 pipeline {
-    agent { label 'seh-sit' }  // Specify the correct node label
+    agent any { // Specify the correct node label
 
-    environment {
-        AWS_REGION = 'us-west-2'
-        CLUSTER_NAME = 'newcluster'
-        BRANCH_NAME = 'main'
-    }
-
+    
     stages {
         stage('Checkout') {
             steps {
-                git branch: "${env.BRANCH_NAME}", url: 'https://github.com/ramyerubandi1/microservice-helm-charts.git'
+                sh 'git clone -b main https://github.com/ramyerubandi1/microservice-helm-charts.git'
             }
         }
 
         stage('Configure AWS') {
             steps {
                 script {
-                    sh '''
-                    #!/bin/bash
-                    aws eks update-kubeconfig --region "${AWS_REGION}" --name "${CLUSTER_NAME}"
-                    '''
+                    sh 'aws eks update-kubeconfig --region us-west-2 --name newcluster'
                 }
             }
         }
@@ -28,11 +20,8 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 script {
-                    // Ensure variable substitution is done correctly
-                    sh """
-                    #!/bin/bash
-                    helm upgrade --install my-release ./calculator-app --namespace default 
-                    """
+                    
+                    sh 'helm upgrade --install my-release ./calculator-app --namespace default '
                 }
             }
         }
