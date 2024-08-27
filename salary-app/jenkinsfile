@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'seh-sit' }  // Specify the correct node label
+    agent { label 'seh-sit' } 
 
     
 
@@ -21,11 +21,11 @@ pipeline {
         stage('Deploy with Helm') {
             steps {
                 script {
-                    // Ensure variable substitution is done correctly
-                    sh """
-                    #!/bin/bash
+                    
+                    sh '
+                    
                     helm upgrade --install my-release2 ./salary-app --namespace default 
-                    """
+                    '
                 }
             }
         }
