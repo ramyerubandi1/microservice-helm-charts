@@ -14,7 +14,7 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
-      serviceAccountName: my-service-account
+      
       containers:
         - name: calculator-app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
