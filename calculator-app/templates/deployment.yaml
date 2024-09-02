@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
-     spec:
-      serviceAccountName: my-service-account
+     
+          serviceAccountName: my-service-account
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
