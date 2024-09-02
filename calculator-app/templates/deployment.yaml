@@ -21,8 +21,6 @@ spec:
           ports:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
-     
-          serviceAccountName: my-service-account
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
@@ -39,3 +37,4 @@ spec:
            readOnly: true
            volumeAttributes:
             secretProviderClass: aws-secrets
+           serviceAccountName: my-service-account
