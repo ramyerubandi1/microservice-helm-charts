@@ -16,6 +16,7 @@ configMapData:
   log_level: "debug"
 
 secretData:
+  app_name: "calculator-app"
   db_password: "supersecretpassword"
   
 hpa:
