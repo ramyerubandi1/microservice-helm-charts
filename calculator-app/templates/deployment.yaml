@@ -25,17 +25,14 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
-            - name: secret-store-inline
-              mountPath: /mnt/secret
+            - name: secret-volume
+              mountPath: /etc/secret-volume
               readOnly: true
       volumes:
        - name: config-volume
          configMap:
            name: calculator-app
-       - name: secret-store-inline
-         csi:
-           driver: secrets-store.csi.k8s.io
-           readOnly: true
-           volumeAttributes:
-            secretProviderClass: aws-secrets
+       - name: secret-volume
+          secret:
+           secretName: test-secret
            
