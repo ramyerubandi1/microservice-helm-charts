@@ -11,6 +11,13 @@ service:
   port: 80
   targetPort: 5000
 
+configMapData:
+  app_name: "calculator-app"
+  log_level: "debug"
+
+secretData:
+  db_password: "supersecretpassword"
+  
 hpa:
   enabled: true
   minReplicas: 1
