@@ -15,6 +15,7 @@ spec:
         app: {{ .Release.Name }}
     spec:
       containers:
+          serviceAccountName: my-service-account
         - name: calculator-app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -37,4 +38,4 @@ spec:
            readOnly: true
            volumeAttributes:
             secretProviderClass: aws-secrets
-           serviceAccountName: my-service-account
+           
