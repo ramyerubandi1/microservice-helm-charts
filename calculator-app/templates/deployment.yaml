@@ -28,4 +28,6 @@ spec:
        - name: config-volume
          configMap:
             name: calculator-app
+         secret: 
+          name: calculator-app
           
