@@ -21,15 +21,14 @@ spec:
           ports:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
+     spec:
+      serviceAccountName: my-service-account
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
             - name: secret-store-inline
               mountPath: /mnt/secret
               readOnly: true
-    spec:
-    serviceAccountName: my-service-account
-
       volumes:
        - name: config-volume
          configMap:
