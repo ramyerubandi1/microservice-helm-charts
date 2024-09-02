@@ -33,6 +33,6 @@ spec:
          configMap:
            name: calculator-app
        - name: secret-volume
-          secret:
+         secret:
            secretName: test-secret
            
