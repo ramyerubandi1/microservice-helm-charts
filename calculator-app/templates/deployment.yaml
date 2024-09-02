@@ -26,6 +26,6 @@ spec:
               mountPath: /etc/config
       volumes:
        - name: config-volume
-          configMap:
-             name: calculator-app
+         configMap:
+            name: calculator-app
           
