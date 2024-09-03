@@ -21,8 +21,7 @@ spec:
           ports:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
-         
-         volumeMounts:
+          volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
               readOnly: true
