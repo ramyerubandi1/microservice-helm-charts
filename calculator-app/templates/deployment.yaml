@@ -23,7 +23,7 @@ spec:
           resources: {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: MY_SECRET
-              valueFrom: default
+              valueFrom: 
                 secretKeyRef:
                   name: external-secrets
                   key: my-secret-key
