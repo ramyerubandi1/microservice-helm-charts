@@ -22,17 +22,19 @@ spec:
           ports:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
+           env:
+        - name: MY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: my-external-secret
+              key: my-secret-key
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
-            - name: secret-volume
-              mountPath: /etc/secret-volume
               readOnly: true
       volumes:
        - name: config-volume
          configMap:
            name: calculator-app
-       - name: secret-volume
-         secret:
-           secretName: test-secret
+    
            
