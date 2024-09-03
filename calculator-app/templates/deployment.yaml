@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}
@@ -14,7 +14,6 @@ spec:
       labels:
         app: {{ .Release.Name }}
     spec:
-      
       containers:
         - name: calculator-app
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -23,18 +22,16 @@ spec:
             - containerPort: 5000
           resources: {{- toYaml .Values.resources | nindent 12 }}
           env:
-          - name: MY_SECRET
-            valueFrom:
-              secretKeyRef:
+            - name: MY_SECRET
+              valueFrom:
+                secretKeyRef:
                   name: my-external-secret
-                     key: my-secret-key
+                  key: my-secret-key
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config/config
               readOnly: true
       volumes:
-       - name: config-volume
-         configMap:
-           name: calculator-app
-    
-           
+        - name: config-volume
+          configMap:
+            name: calculator-app
