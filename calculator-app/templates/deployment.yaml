@@ -25,7 +25,7 @@ spec:
             - name: MY_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: my-external-secret
+                  name: external-secrets
                   key: my-secret-key
           volumeMounts:
             - name: config-volume
