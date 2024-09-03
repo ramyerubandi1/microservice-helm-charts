@@ -24,8 +24,8 @@ spec:
           resources: {{- toYaml .Values.resources | nindent 12 }}
           env:
           - name: MY_SECRET
-             valueFrom:
-                secretKeyRef:
+            valueFrom:
+              secretKeyRef:
                   name: my-external-secret
                      key: my-secret-key
           volumeMounts:
