@@ -22,7 +22,7 @@ secretData:
 hpa:
   enabled: true
   minReplicas: 2
-  maxReplicas: 2
+  maxReplicas: 5
   cpuUtilization: 50
   memoryUtilization: 50
 
