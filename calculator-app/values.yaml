@@ -29,8 +29,11 @@ hpa:
 ingress:
   enabled: false
 
-resources: {}
-
+resources:
+  requests:
+    memory: "1Gi"
+    cpu: "1"
+  
 nodeSelector: {}
 
 tolerations: []
