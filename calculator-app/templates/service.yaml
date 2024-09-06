@@ -5,9 +5,10 @@ metadata:
   labels:
     app: {{ .Release.Name }} # This annotation is required to specify the use of ALB
   annotations:
-    alb.ingress.kubernetes.io/scheme: "internet-facing" # Scheme for ALB
-    alb.ingress.kubernetes.io/healthcheck-path: "/health" # Optional: Health check path for ALB
-    alb.ingress.kubernetes.io/backend-protocol: "HTTP"
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb" # Correct annotation for ALB
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # Set ALB scheme
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health" # Health check path
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP" # Backend protocol
 spec:
   type: {{ .Values.service.type }}
   ports:
