@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }} # This annotation is required to specify the use of ALB
   annotations:
-   service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # or "internal" for internal load balancer
     service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health" # Optional
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP"
