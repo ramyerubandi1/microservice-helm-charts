@@ -26,6 +26,9 @@ ingress:
   enabled: true
   name: calculator-app
   scheme: internet-facing 
+  service:
+  name: calculator-app
+  port: 80
   number: 5000 # Can be set to 'internal' if needed
 resources:
   requests:
