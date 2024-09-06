@@ -3,12 +3,14 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }} # This label should match the selector for proper routing  
+    app: {{ .Release.Name }} # This label should match the selector for proper routing
 spec:
   type: {{ .Values.service.type }} # Should be "LoadBalancer" to trigger ALB creation
   ports:
-      port: {{ .Values.service.port }} # The port exposed by the ALB
+    - port: {{ .Values.service.port }} # The port exposed by the ALB
       targetPort: {{ .Values.service.targetPort }} # The port the application listens on
+      protocol: TCP # Specify the protocol (default is TCP)
   selector:
     app: {{ .Release.Name }} # Ensure this matches the labels in your Deployment/Pod
+
 
