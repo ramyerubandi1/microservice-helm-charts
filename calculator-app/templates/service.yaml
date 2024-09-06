@@ -3,16 +3,18 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }} # This annotation is required to specify the use of ALB
+    app: {{ .Release.Name }} # This label should match the selector for proper routing
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "alb" # Correct annotation for ALB
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # Set ALB scheme
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health" # Health check path
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP" # Backend protocol
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb" # Specifies that an ALB should be used
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # Set to "internet-facing" or "internal"
+    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health" # Specify the health check path
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP" # Backend protocol between ALB and your service
 spec:
-  type: {{ .Values.service.type }}
+  type: {{ .Values.service.type }} # Should be "LoadBalancer" to trigger ALB creation
   ports:
-      port: {{ .Values.service.port }}
-      targetPort: {{ .Values.service.targetPort }}
+    - protocol: TCP
+      port: {{ .Values.service.port }} # The port exposed by the ALB
+      targetPort: {{ .Values.service.targetPort }} # The port the application listens on
   selector:
-    app: {{ .Release.Name }}
+    app: {{ .Release.Name }} # Ensure this matches the labels in your Deployment/Pod
+
