@@ -4,6 +4,8 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: alb
 spec:
   type: {{ .Values.service.type }}
   ports:
