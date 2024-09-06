@@ -7,7 +7,6 @@ metadata:
 spec:
   type: {{ .Values.service.type }} # Should be "LoadBalancer" to trigger ALB creation
   ports:
-    - protocol: TCP
       port: {{ .Values.service.port }} # The port exposed by the ALB
       targetPort: {{ .Values.service.targetPort }} # The port the application listens on
   selector:
