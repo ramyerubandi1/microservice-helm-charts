@@ -3,11 +3,11 @@ kind: Ingress
 metadata:
   name: {{ .Values.ingress.name }}
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.scheme }}
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
+  ingressClassName: alb # Specify the Ingress class here
   rules:
   - host: {{ .Values.ingress.host }}
     http:
@@ -19,4 +19,5 @@ spec:
             name: {{ .Values.service.name }}
             port:
               number: {{ .Values.service.port }}
+
 
