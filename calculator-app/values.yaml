@@ -5,10 +5,7 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
-service:
-  name: calculator-app
-  port: 80
-  targetPort: 5000
+
 
 configMapData:
   app_name: "calculator-app"
