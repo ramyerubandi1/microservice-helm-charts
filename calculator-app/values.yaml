@@ -29,7 +29,8 @@ hpa:
 ingress:
   enabled: true
   name: calculator-app-ingress
-  scheme: internet-facing  # Can be set to 'internal' if needed
+  scheme: internet-facing 
+  port: 5000 # Can be set to 'internal' if needed
 resources:
   requests:
     memory: "500m"
