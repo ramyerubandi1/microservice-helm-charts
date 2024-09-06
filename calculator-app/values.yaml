@@ -7,7 +7,6 @@ image:
 
 service:
   name: calculator-app
-  type: LoadBalancer
   port: 80
   targetPort: 5000
 
@@ -28,7 +27,7 @@ hpa:
 
 ingress:
   enabled: true
-  name: calculator-app-ingress
+  name: calculator-app
   scheme: internet-facing 
   number: 5000 # Can be set to 'internal' if needed
 resources:
