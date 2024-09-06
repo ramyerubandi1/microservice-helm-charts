@@ -3,9 +3,12 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }}
+    app: {{ .Release.Name }} # This annotation is required to specify the use of ALB
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: alb
+    service.beta.kubernetes.io/aws-load-balancer-type: "alb"  
+    alb.ingress.kubernetes.io/target-type: instance 
+    alb.ingress.kubernetes.io/scheme: internet-facing      # ALB scheme, could be 'internet-facing' or 'internal'
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
   type: {{ .Values.service.type }}
   ports:
