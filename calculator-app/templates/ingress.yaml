@@ -1,21 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.ingress.name }}-ingress
+  name: {{ include "calculator-app.fullname" . }}-ingress
   annotations:
-   kubernetes.io/ingress.class: "alb"
+    kubernetes.io/ingress.class: "alb"
 spec:
-  ingressClassName: alb # Specify the Ingress class here
   rules:
-  - host: {{ .Values.ingress.host }}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Values.service.name }}
-            port:
-              number: {{ .Values.service.port }}
+    - host: {{ .Values.ingress.host | default "example.com" }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.service.name }}
+                port:
+                  number: {{ .Values.service.port }}
+
 
 
