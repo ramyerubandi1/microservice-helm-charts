@@ -9,6 +9,14 @@ metadata:
     alb.ingress.kubernetes.io/scheme: {{ .Values.ingress.scheme }} # internet-facing or internal
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/group.name: {{ .Values.ingress.groupName }} # (optional) for grouping ALBs
+    alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.ingress.healthCheckPath }} # e.g., /healthz
+    alb.ingress.kubernetes.io/healthcheck-port: {{ .Values.ingress.healthCheckPort }} # Optional, typically the same as the backend port
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30" # Interval for health checks
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5" # Timeout for each health check attempt
+    alb.ingress.kubernetes.io/healthy-threshold-count: "3" # Number of healthy responses needed for a target to be considered healthy
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2" # Number of failed responses needed for a target to be considered unhealthy
+    alb.ingress.kubernetes.io/load-balancer-attributes: 'idle_timeout.timeout_seconds=60' # Optional, idle timeout configuration
 spec:
   ingressClassName: alb
   rules:
@@ -22,6 +30,7 @@ spec:
             name: {{ .Values.service.name }}
             port:
               number: 5000
+
 
 
 
