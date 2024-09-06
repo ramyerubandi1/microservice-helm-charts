@@ -28,7 +28,7 @@ hpa:
 
 ingress:
   enabled: true
-  host: my-release.example.com
+  host: calculator-app
   scheme: internet-facing  # Can be set to 'internal' if needed
 resources:
   requests:
