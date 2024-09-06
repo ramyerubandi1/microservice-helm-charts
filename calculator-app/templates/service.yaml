@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: calculator-app
 spec:
+  type: clusterIP
   ports:
     - port: 80
       targetPort: 5000
