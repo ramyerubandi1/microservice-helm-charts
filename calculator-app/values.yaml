@@ -27,8 +27,10 @@ hpa:
   memoryUtilization: 50
 
 ingress:
-  enabled: false
-
+  ingress:
+  enabled: true
+  host: my-release.example.com
+  scheme: internet-facing  # Can be set to 'internal' if needed
 resources:
   requests:
     memory: "500m"
