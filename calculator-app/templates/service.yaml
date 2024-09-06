@@ -3,12 +3,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }} # This label should match the selector for proper routing
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "alb" # Specifies that an ALB should be used
-    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # Set to "internet-facing" or "internal"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/health" # Specify the health check path
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "HTTP" # Backend protocol between ALB and your service
+    app: {{ .Release.Name }} # This label should match the selector for proper routing  
 spec:
   type: {{ .Values.service.type }} # Should be "LoadBalancer" to trigger ALB creation
   ports:
