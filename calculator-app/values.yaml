@@ -5,6 +5,12 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
+service:
+  name: calculator-app
+  type: clusterIP
+  port: 80
+  targetPort: 5000
+
 
 
 configMapData:
