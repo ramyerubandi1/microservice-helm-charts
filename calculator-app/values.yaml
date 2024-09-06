@@ -28,6 +28,7 @@ hpa:
 
 ingress:
   enabled: true
+  name: calculator-app-ingress
   host: calculator-app
   scheme: internet-facing  # Can be set to 'internal' if needed
 resources:
