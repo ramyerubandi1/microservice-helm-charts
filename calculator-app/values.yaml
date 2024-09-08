@@ -6,11 +6,6 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: instance
-    alb.ingress.kubernetes.io/ingress.class: alb
   port: 80 # The port on which the LoadBalancer will listen
   targetPort: 5000 # The port your service will route to
 
