@@ -25,12 +25,7 @@ hpa:
   cpuUtilization: 50
   memoryUtilization: 50
 
-ingress:
-  enabled: true
-  name: calulator-app-ingress
-  host: calculator-app.example.com
-  scheme: internet-facing 
-  # Can be set to 'internal' if needed
+
 resources:
   requests:
     memory: "500m"
