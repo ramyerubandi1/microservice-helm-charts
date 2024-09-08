@@ -2,10 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: my-service
-  annotations:
-    alb.ingress.kubernetes.io/scheme: {{ .Values.service.annotations."alb.ingress.kubernetes.io/scheme" }}
-    alb.ingress.kubernetes.io/target-type: {{ .Values.service.annotations."alb.ingress.kubernetes.io/target-type" }}
-    alb.ingress.kubernetes.io/ingress.class: {{ .Values.service.annotations."alb.ingress.kubernetes.io/ingress.class" }}
+   type: LoadBalancer
+     annotations:
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: instance
+      alb.ingress.kubernetes.io/ingress.class: alb
 spec:
   type: {{ .Values.service.type }}
   ports:
