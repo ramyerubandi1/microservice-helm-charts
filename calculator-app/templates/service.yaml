@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Release.Name }}
+  name: my-service
   labels:
-    app: {{ .Release.Name }}
+    app: calculator-app
 spec:
-  type: ClusterIP  # Setting the service type to ClusterIP
+  type: ClusterIP
   ports:
-    - port: {{ .Values.service.port }}        # Port exposed by the service
-      targetPort: {{ .Values.service.targetPort }}  # Port where the application is running
+    - port: 80           # Port exposed by the service
+      targetPort: 5000   # Port on the pod where the app is running
   selector:
-    app: {{ .Release.Name }}  # Selector that matches the pod labels
+    app: calculator-app
