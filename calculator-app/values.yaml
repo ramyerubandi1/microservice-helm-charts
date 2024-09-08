@@ -6,8 +6,10 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  name: calculator-app
-  port: 3000
+  type: ClusterIP
+  port: 80          # Port the service will listen on
+  targetPort: 5000  # Port on the pod to route traffic to
+
 
 
 configMapData:
