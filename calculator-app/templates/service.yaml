@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "your-chart.name" . }}
+  name: my-service
   annotations:
     alb.ingress.kubernetes.io/scheme: {{ .Values.service.annotations."alb.ingress.kubernetes.io/scheme" }}
     alb.ingress.kubernetes.io/target-type: {{ .Values.service.annotations."alb.ingress.kubernetes.io/target-type" }}
@@ -12,4 +12,4 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
   selector:
-    app: {{ include "your-chart.name" . }}
+    app: calculator-app
