@@ -1,22 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-ingress
-  namespace: default
+  name: my-app-ingress
   annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing        # Expose ALB publicly
-    alb.ingress.kubernetes.io/target-type: ip                # Target type is IP
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]' # Listen on HTTP port 80
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
 spec:
-  ingressClassName: alb   # Specify that this Ingress uses the ALB
   rules:
-    - host: your-app.example.com  # Replace with your desired hostname
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: my-service       # Name of the service created above
-                port:
-                  number: 80           # Port exposed by the service
+  - host: my-app.example.com
+    http:
+      paths:
+      - path: /*
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 5000
+       # Port exposed by the service
