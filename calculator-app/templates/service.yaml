@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: my-microservice
 spec:
-  type: NodePort
+  type: Cluster IP
   ports:
   - port: 80
     targetPort: 5000
