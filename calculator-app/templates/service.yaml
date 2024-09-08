@@ -1,12 +1,11 @@
-# service.yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: my-microservice
 spec:
-  type: Cluster IP
-  ports:
-  - port: 80
-    targetPort: 5000
+  type: ClusterIP
   selector:
-    app: calculator-app
+    app: calculator-app # Ensure this matches the labels on your pods
+  ports:
+    - port: 80
+      targetPort: 5000
