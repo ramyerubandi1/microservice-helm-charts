@@ -1,22 +1,22 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
+  name: my-ingress
   namespace: default
   annotations:
-    # Remove this deprecated annotation
-    # kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/scheme: internet-facing        # Expose ALB publicly
+    alb.ingress.kubernetes.io/target-type: ip                # Target type is IP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]' # Listen on HTTP port 80
 spec:
-  ingressClassName: alb  # Use this field instead of the deprecated annotation
+  ingressClassName: alb   # Specify that this Ingress uses the ALB
   rules:
-    - host: your-app.example.com
+    - host: your-app.example.com  # Replace with your desired hostname
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: calculator-app
+                name: my-service       # Name of the service created above
                 port:
-                  number: 5000
+                  number: 80           # Port exposed by the service
