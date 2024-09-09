@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: my-microservice
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
-    app: calculator-app # Ensure this matches the labels on your pods
+    app.kubernetes.io/name: calculator-app # Ensure this matches the labels on your pods
   ports:
     - port: 80
       targetPort: 5000
