@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: calculator-app # Ensure this matches the labels on your pods
+    app: my-release # Ensure this matches the labels on your pods
   ports:
     - port: 80
       targetPort: 5000
