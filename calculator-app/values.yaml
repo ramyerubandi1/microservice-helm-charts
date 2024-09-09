@@ -9,7 +9,7 @@ service:
   name: calculator-app
   type: CulsterIP
   port: 80
-  targetPort: 4000
+  targetPort: 5000
 
 configMapData:
   app_name: "calculator-app"
