@@ -7,7 +7,7 @@ image:
 
 service:
   name: calculator-app
-  type: CulsterIP
+  type: ClusterIP
   port: 80
   targetPort: 5000
 
