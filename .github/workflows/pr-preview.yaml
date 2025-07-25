@@ -1,0 +1,31 @@
+name: Helm Chart PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Helm
+      uses: azure/setup-helm@v3
+
+    - name: Package chart
+      run: |
+        mkdir -p output
+        helm package charts/mychart -d output
+
+    - name: Create index.yaml for preview
+      run: |
+        cd output
+        helm repo index . --url https://ramyerubandi1.github.io/microservice-helm-charts/preview/pr-${{ github.event.pull_request.number }}
+
+    - name: Push PR preview to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
+        destination_dir: preview/pr-${{ github.event.pull_request.number }}
+        publish_branch: gh-pages
