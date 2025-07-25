@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  salary-app:
+  - apiVersion: v2
+    created: "2025-07-25T12:59:10.0438837+05:30"
+    description: A Helm chart for Salary Flask app
+    digest: 1953be85984d94db4e00d01dd3bc66259fd1e097af87c9376b0b8993f716ed40
+    name: salary-app
+    urls:
+    - https://ramyerubandi1.github.io/microservice-helm-charts/salary-app-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-25T12:59:10.0438837+05:30"
