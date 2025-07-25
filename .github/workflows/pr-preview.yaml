@@ -23,10 +23,10 @@ jobs:
         cd output
         helm repo index . --url https://ramyerubandi1.github.io/microservice-helm-charts/preview/pr-${{ github.event.pull_request.number }}
 
-    - name: Push PR preview to gh-pages
+    - name: Push PR preview to main branch
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./output
         destination_dir: preview/pr-${{ github.event.pull_request.number }}
-        publish_branch: gh-pages
+        publish_branch: main
